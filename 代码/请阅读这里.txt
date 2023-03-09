@@ -1,0 +1,9 @@
+1、所有*.py文件均为代码，已经过注释检查。
+2、注意utils文件夹中只有utils.pyx是代码，utils.c为系统自动生成代码，无法添加注释，故希望届时不要将utils.c文件纳入注释检查的范围。x1
+2、注意utils文件夹中只有utils.pyx是代码，utils.c为系统自动生成代码，无法添加注释，故希望届时不要将utils.c文件纳入注释检查的范围。x2
+2、注意utils文件夹中只有utils.pyx是代码，utils.c为系统自动生成代码，无法添加注释，故希望届时不要将utils.c文件纳入注释检查的范围。x3 (重要的事情重复三次~)
+3、如果想要获得运行测试样例，请运行 “运行测试.py”文件：
+	python 运行测试样例.py
+4、utils文件夹是cython自动编译的结果，如果想重编译，则输入以下命令行:
+	cd utils
+	python cython_setup.py build_ext --inplace
