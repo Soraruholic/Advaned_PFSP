@@ -1,0 +1,130 @@
+\documentclass{article}
+\usepackage{bm}
+\usepackage{graphicx}
+\usepackage{indentfirst}
+\usepackage{float}
+\usepackage{amsthm,amsmath,amssymb}
+\usepackage{datetime}
+\usepackage{MnSymbol}
+\usepackage[stable]{footmisc}
+\usepackage{pdflscape}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+\begin{document}
+\begin{algorithm} 
+	\caption{NEH Heuristic} 	
+	\begin{algorithmic}
+		\STATE Calculate the total processing time of each job as $S[1,\cdots n]$
+		\STATE Sort $S[1,\cdots n]$ in the descending order
+		\STATE 
+		\REQUIRE $n \geq 0 \vee x \neq 0$ 
+		\ENSURE $y = x^n$ 
+		\STATE $y \gets 1$ 
+		\IF{$n < 0$} 		
+		\STATE $X \gets 1 / x$ 
+		\STATE $N \gets -n$ 
+		\ELSE 
+		\STATE $X \gets x$ 
+		\STATE $N \gets n$ 
+		\ENDIF 
+		\WHILE{$N \neq 0$} 
+		\IF{$N$ is even} 
+		\STATE $X \gets X \times X$ 
+		\STATE $N \gets N / 2$ 
+		\ELSE[$N$ is odd] \STATE $y \gets y \times X$ 
+		\STATE $N \gets N - 1$ 
+		\ENDIF 
+		\ENDWHILE 
+	\end{algorithmic} 
+\end{algorithm}
+\begin{algorithm} 
+	\caption{NEH Heuristic} 	
+	\begin{algorithmic}
+		\STATE Calculate the total processing time of each job as $S[1,\cdots n]$
+		\STATE Sort $S[1,\cdots n]$ in the descending order
+		\STATE 
+		\REQUIRE $n \geq 0 \vee x \neq 0$ 
+		\ENSURE $y = x^n$ 
+		\STATE $y \gets 1$ 
+		\IF{$n < 0$} 		
+		\STATE $X \gets 1 / x$ 
+		\STATE $N \gets -n$ 
+		\ELSE 
+		\STATE $X \gets x$ 
+		\STATE $N \gets n$ 
+		\ENDIF 
+		\WHILE{$N \neq 0$} 
+		\IF{$N$ is even} 
+		\STATE $X \gets X \times X$ 
+		\STATE $N \gets N / 2$ 
+		\ELSE[$N$ is odd] \STATE $y \gets y \times X$ 
+		\STATE $N \gets N - 1$ 
+		\ENDIF 
+		\ENDWHILE 
+	\end{algorithmic} 
+\end{algorithm}\begin{algorithm} 
+	\caption{Hill Climbing} 	
+	\begin{algorithmic}
+		\STATE $\pi := $ NEH\_Heuristic 
+		\STATE $\pi :=$ Local\_Search$(\pi)$
+		\STATE iter := 0
+		\WHILE{iter $<$ MAX\_ITERATIONS}
+		\STATE i, j := Random\_Integers$(0, n)$
+		\STATE Swap ($\pi_i, \pi_j$)
+		\STATE $\pi' :=$ Local\_Search$(\pi)$
+		\IF{$C_{\pi'}<C_{\pi}$}
+		\STATE $\pi := \pi'$ 
+		\ENDIF
+		\STATE iter := iter $+$ 1
+		\ENDWHILE
+	\end{algorithmic} 
+\end{algorithm}
+
+\begin{algorithm} 
+	\caption{Simulated Annealing} 	
+	\begin{algorithmic}
+		\STATE $\pi := $ NEH\_Heuristic 
+		\STATE $\pi :=$ Local\_Search$(\pi)$
+		\STATE iter := 0
+		\STATE temperature := Osman\_Initialization$(\pi)$
+		\WHILE{iter $<$ MAX\_ITERATIONS}
+		\STATE i, j := Random\_Integers$(0, n)$
+		\STATE Swap ($\pi_i, \pi_j$)
+		\STATE $\pi' :=$ Local\_Search$(\pi)$
+		\STATE diff := $C_{\pi'} - C_{\pi}$
+		\STATE acceptance\_criterion := $\textbf{exp}(- \text{diff}/\text{temperature})$
+		\STATE probablity := Random\_Real (0, 1)
+		\IF{$C_{\pi'}<C_{\pi}$}
+		\STATE $\pi := \pi'$ 
+		\ELSIF {probablity $<$ acceptance\_criterion}
+		\STATE $\pi := \pi'$ 
+		\ENDIF
+		\STATE iter := iter $+$ 1
+		\IF{iter $\%$ ITER\_PER\_EPOCH $==$ 0}
+		\STATE temperature := temperature * annealing\_rate
+		\ENDIF
+		\ENDWHILE
+	\end{algorithmic} 
+\end{algorithm}
+
+
+\begin{algorithm} 
+	\caption{Genetic Algorithm} 	
+	\begin{algorithmic}
+		\STATE population := Initialize\_Chromes()
+		\STATE population :=  Local\_Search (population)
+		\STATE generation := 0
+		\WHILE{generation $<$ MAX\_GENERATION}
+		\STATE new\_population := Select\_Chromes(population)
+		\STATE new\_population := CrossOver\_Chromes(new\_population)
+		\STATE new\_population := Mute\_Chromes (new\_population)
+		\STATE new\_population :=  Local\_Search (new\_population)
+		\IF{$\textbf{max}\left(C_{new\_population}\right) < \textbf{max}\left(C_{population}\right)$}
+		\STATE population := new\_population
+		\ENDIF
+		\STATE generation := generation $+$ 1
+		\ENDWHILE
+	\end{algorithmic} 
+\end{algorithm}
+\end{document}
