@@ -1,2 +1,5 @@
-# Advaned_PFSP
-Genetic, NEH, Hill Climb, Simulated Annealing, Local Search, Palmer
+# 基于贪心的邻域搜索在PFSP中的综合应用
+使用算法 ： Genetic, NEH, Hill Climb, Simulated Annealing, Local Search, Palmer
+基于现代化工业生产常遇的生产问题，抽象出置换流水车间模型，即求解最优组合使得最大完成生产时间跨度达到最小值，从而最优化生产计划。给出了多种经典算法的实现，并在朴素的智能算法之上，提出了一种基于贪心策略的邻域搜索算法模块以增强传统算法，并从理论与实践的角度证明了其可行性与可靠性。通过数据可视化的角度，展示了这种增强算法的绝对优势，清晰明了的对比各种算法的优缺。
+
+声明：课程作业，仅供参考，请遵守Academic Integrity。
